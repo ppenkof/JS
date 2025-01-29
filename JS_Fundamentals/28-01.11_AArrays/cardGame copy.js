@@ -1,0 +1,74 @@
+function cardGame(arr) {
+    let pointDrowning = {};
+    let value = {};
+    for (let argument of arr) {
+        let [name, deck] = argument.split(': ');
+        let typeCard = deck.split(', ');
+        for (let card of typeCard) {
+            if (!(name in pointDrowning)) {
+                pointDrowning[name] = [card];
+            } else {
+                if (!(pointDrowning[name].includes(card))) {
+                    pointDrowning[name].push(card);
+                }
+            }
+        }
+    }
+    let entries = Object.entries(pointDrowning);
+    for (const element of entries) {
+        let [name, arrPower] = element;
+        let sum = 0;
+        for (const card of arrPower) {
+            let [power, multiplayer] = card.split('');
+            if (card.length > 2) {
+                power = '10';
+                multiplayer = card[2];
+            }
+            for (let i = 2; i <= 18; i++) {
+                if (i < 11) {
+                    value['' + i] = i;
+                } else if (i === 11) {
+                    value['J'] = i;
+                } else if (i === 12) {
+                    value['Q'] = i;
+                } else if (i === 13) {
+                    value['K'] = i;
+                } else if (i === 14) {
+                    value['A'] = i;
+                } else if (i === 15) {
+                    value['S'] = 4;
+                } else if (i === 16) {
+                    value['H'] = 3;
+                } else if (i === 17) {
+                    value['D'] = 2;
+                } else if (i === 18) {
+                    value['C'] = 1;
+                }
+            }
+            sum += value[power] * value[multiplayer];
+        }
+        console.log(`${name}: ${sum}`);
+    }
+
+}
+cardGame([
+
+    'John: 2C, 4H, 9H, AS, QS',
+
+    'Slav: 3H, 10S, JC, KD, 5S, 10S',
+
+    'Alex: 6H, 7S, KC, KD, 5S, 10C',
+
+    'Thomas: QH, QC, JS, JD, JC',
+
+    'Slav: 6H, 7S, KC, KD, 5S, 10C',
+
+    'Thomas: QH, QC, JS, JD, JC',
+
+    'Alex: 6H, 7S, KC, KD, 5S, 10C',
+
+    'Thomas: QH, QC, JS, JD, JC',
+
+    'John: JD, JD, JD, JD'
+
+])
