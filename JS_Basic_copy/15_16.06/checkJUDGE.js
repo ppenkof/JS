@@ -1,0 +1,1 @@
+function sal(input){console.log(input)}
