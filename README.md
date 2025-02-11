@@ -1,1 +1,1 @@
-This are all my SoftUni exercise.
+These are all my exercise at SoftUni.
