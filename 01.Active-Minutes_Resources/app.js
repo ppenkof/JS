@@ -145,10 +145,10 @@ function solve() {
       liEl.remove();
       addActitityBtn.disabled = false;
 
-      btnDelete.addEventListener('click', onDelete);
+      btnDelete.addEventListener("click", onDelete);
 
-      function onDelete(){
-        let trElement=btnDelete.closest('tr');
+      function onDelete() {
+        let trElement = btnDelete.closest("tr");
         trElement.remove();
       }
     }
