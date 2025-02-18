@@ -1,11 +1,11 @@
-// How to add a method to an object
-// const dog = {
-//     name: "Akira",
-//     age: 1.2,
-//     bark: function () {
-//       console.log("bark, bark, bark...");
-//     },
-//   };
+//How to add a method to an object
+const dog = {
+    name: "Akira",
+    age: 1.2,
+    bark: function () {
+      console.log("bark, bark, bark...");
+    },
+  };
   
   // Invoke the method
   // dog.bark();
