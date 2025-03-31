@@ -10,8 +10,8 @@ export default async function solutionDashboardPage() {
 
 function dashboardTemplate(solution) {
   return html`
-    <h2>Collection</h2>
-
+    <!-- Dashboard page -->
+    <h2>Solutions</h2>
     ${solution.length > 0
       ? html`
           <section id="solution">
