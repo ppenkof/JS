@@ -7,18 +7,15 @@ export default async function tattooHomePage() {
 }
 
 function homeTemplate() {
-  return html`
+  return html`<!-- Home page -->
     <section id="home">
-      <div id="home-wrapper">
-        <p id="home-intro">
-          Whether you're a seasoned artist, a collector of ink, or someone
-          looking for inspiration for their first tattoo,
-          <span>Tattoo Masters</span> is your community. Share your
-          masterpieces, discover incredible designs, and connect with artists
-          and aficionados from around the world.
-        </p>
-        <a href="/register" id="join-us">Join Us!</a> <!--should navigate to register page-->
-      </div>
-    </section>
-  `; 
+      <h1>
+        Dive into our world of cutting-edge technologies and out-of-the-box
+        ideas designed to make Mother Nature smile again. From quirky gadgets to
+        serious solutions, we're here to show you that saving the planet can be
+        as exciting as it is essential. Join us in our mission to turn "green"
+        into more than just a color - it's a lifestyle!
+      </h1>
+      <img id="home-img" src="/images/logo.png" alt="home-img" />
+    </section> `;
 }
