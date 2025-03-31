@@ -1,51 +1,54 @@
 import { get, post, put, del } from "./requester.js";
-import { baseTattoosUrl, baseBonusTattoosUrl } from "../constants.js";
+import { baseSolutionsUrl, baseBonusLikeUrl } from "../constants.js";
 import { getUserId } from "../utils.js";
 
 const userId = getUserId();
 
 async function getAll() {
-  return await get(`${baseTattoosUrl}?sortBy=_createdOn%20desc`);
+  return await get(`${baseSolutionsUrl}?sortBy=_createdOn%20desc`);
 }
 
-async function getById(tattooId) {
-  return await get(`${baseTattoosUrl}/${tattooId}`);
+async function getById(solutionId) {
+  return await get(`${baseSolutionsUrl}/${solutionId}`);
 }
 
-async function getByTitle(tattooTitle) {
+async function getByTitle(solutionTitle) {
   return await get(
-    `${baseTattoosUrl}?where=title%20LIKE%20%22${tattooTitle}%22`
+    `${baseSolutionsUrl}?where=title%20LIKE%20%22${solutionTitle}%22`
   );
 }
 
-async function getLikesByUser(tattooId, userId) {
+async function getLikesByUser(solutionId, userId) {
   return await get(
-    `${baseBonusTattoosUrl}?where=tattooId%3D%22${tattooId}%22%20and%20_ownerId%3D%22${userId}%22&count`
+    `${baseBonusLikeUrl}?where=solutionId%3D%22${solutionId}%22%20and%20_ownerId%3D%22${userId}%22&count`
   );
 }
 
-async function getLikes(tattooId) {
+async function getLikes(solutionId) {
   return await get(
-    `${baseBonusTattoosUrl}?where=tattooId%3D%22${tattooId}%22&distinct=_ownerId&count`
+    `${baseBonusLikeUrl}?where=solutionId%3D%22${solutionId}%22&distinct=_ownerId&count`
   );
 }
 
-async function setLike(tattooId) {
-  return await post(`${baseBonusTattoosUrl}`, { tattooId });
+async function setLike(solutionId) {
+  return await post(`${baseBonusLikeUrl}`, { solutionId });
 }
 
-async function create(tattooData) {
-  const { "image-url": imageUrl, ...otherData } = tattooData;
-  return await post(baseTattoosUrl, { imageUrl, ...otherData });
+async function create(solutionData) {
+  const { "image-url": imageUrl, ...otherData } = SolutionData;
+  return await post(baseSolutionsUrl, { imageUrl, ...otherData });
 }
 
-async function update(tattooId, tattooData) {
-  const { "image-url": imageUrl, ...otherData } = tattooData;
-  return await put(`${baseTattoosUrl}/${tattooId}`, { imageUrl, ...otherData });
+async function update(solutionId, solutionData) {
+  const { "image-url": imageUrl, ...otherData } = solutionData;
+  return await put(`${baseSolutionsUrl}/${solutionId}`, {
+    imageUrl,
+    ...otherData,
+  });
 }
 
-async function deleteById(tattooId) {
-  await del(`${baseTattoosUrl}/${tattooId}`);
+async function deleteById(solutionId) {
+  await del(`${baseSolutionsUrl}/${solutionId}`);
 }
 
 const itemsService = {

@@ -1,6 +1,6 @@
 const baseUrl = 'http://localhost:3030';
 
 export const baseUsersUrl = `${baseUrl}/users`;
-export const baseTattoosUrl = `${baseUrl}/data/tattoos`;
-export const baseBonusTattoosUrl = `${baseUrl}/data/likes`;
+export const baseSolutionsUrl = `${baseUrl}/data/solutions`;
+export const baseBonusLikeUrl = `${baseUrl}/data/likes`;
 
