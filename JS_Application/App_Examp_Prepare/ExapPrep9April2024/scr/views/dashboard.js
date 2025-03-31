@@ -3,7 +3,7 @@ import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function tattooDashboardPage() {
+export default async function solutionDashboardPage() {
   const solution = await itemsService.getAll();
   render(dashboardTemplate(solution), mainEl);
 }
@@ -15,24 +15,21 @@ function dashboardTemplate(solution) {
     ${solution.length > 0
       ? html`
           <section id="solution">
-            ${solution.map((s) => tattooTemplate(s))}
+            ${solution.map((s) => solutionTemplate(s))}
           </section>
         `
-      : html` <h2 id="no-tattoo">
-          Collection is empty, be the first to contribute
-        </h2>`}
+      : html` <!-- Display an h2 if there are no posts -->
+          <h2 id="no-solution">No Solutions Added.</h2>`}
   `;
 }
-// it have to be checked if totoo.objAtributes is correct
-function tattooTemplate(tattoo) {
-
-  return html`<div class="tattoo">
-    <img src=${tattoo.imageUrl} alt="example1" />
-    <div class="tattoo-info">
-      <h3 class="type">${tattoo.type}</h3>
-      <span>Uploaded by </span>
-      <p class="user-type">${tattoo.userType || tattoo["user-type"]}</p>
-      <a class="details-btn" href="/details/${tattoo._id}">Learn More</a>
+// it have to be checked if solution.objAtributes is correct
+function solutionTemplate(solution) {
+  return html` <div class="solution">
+    <img src=${solution.imageUrl} alt="example3" />
+    <div class="solution-info">
+      <h3 class="type">${solution.type}</h3>
+      <p class="description">${solution.description}</p>
+      <a class="details-btn" href="/details/${solution._id}">Learn More</a>
     </div>
   </div>`;
 }
