@@ -4,19 +4,18 @@ import itemsService from "../api/itemsService.js";
 const mainEl = document.querySelector("main");
 
 export default async function tattooDashboardPage() {
-  const tattoos = await itemsService.getAll();
-  //console.log(tattoos); // it have to check totoo.objAtributes
-  render(dashboardTemplate(tattoos), mainEl);
+  const solution = await itemsService.getAll();
+  render(dashboardTemplate(solution), mainEl);
 }
 
-function dashboardTemplate(tattoos) {
+function dashboardTemplate(solution) {
   return html`
     <h2>Collection</h2>
 
-    ${tattoos.length > 0
+    ${solution.length > 0
       ? html`
-          <section id="tattoos">
-            ${tattoos.map((s) => tattooTemplate(s))}
+          <section id="solution">
+            ${solution.map((s) => tattooTemplate(s))}
           </section>
         `
       : html` <h2 id="no-tattoo">
