@@ -39,6 +39,7 @@ async function logoutUser() {
     await usersService.logout();
     page.redirect("/");
   } catch (err) {
+    removeUserData();
     alert(err.message);
   }
 }
