@@ -11,6 +11,7 @@ export default async function solutionEditPage(ctx) {
 }
 
 function editTemplate(solution) {
+  //console.log(solution);
   return html`
     <!-- Edit Page (Only for logged-in users) -->
     <section id="edit">
@@ -46,7 +47,7 @@ function editTemplate(solution) {
             placeholder="more Info"
             rows="2"
             cols="10"
-            .value=${solution.moreInfo}
+            .value=${solution.moreInfo || solution["more-info"]}
           ></textarea>
           <button type="submit">Edit</button>
         </form>

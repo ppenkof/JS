@@ -24,12 +24,12 @@ function navigationTemplate(token) {
       </div>
 
       ${token
-        ? html`<!-- Logged-in users -->
+        ? html `<!-- Logged-in users -->
             <div class="user">
               <a href="/create">Add Solution</a>
-              <a href="${logoutUser}">Logout</a>
+              <a @click=${logoutUser}>Logout</a>
             </div>`
-        : html`<!-- Guest users -->
+        : html `<!-- Guest users -->
             <div class="guest">
               <a href="/login">Login</a>
               <a href="/register">Register</a>
@@ -46,4 +46,5 @@ async function logoutUser() {
     removeUserData();
     alert(err.message);
   }
+  
 }

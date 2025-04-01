@@ -20,32 +20,25 @@ export default async function solutionDetailsPage(ctx) {
 }
 
 function detailsTemplate(solution, isOwner, token, isClick, likes) {
-  return html` 
-      <!-- Details page -->
-      <section id="details">
+  return html` <!-- Details page -->
+    <section id="details">
       <div id="details-wrapper">
-        <img
-          id="details-img"
-          src=${solution.imageUrl}
-          alt="example1"
-        />
+        <img id="details-img" src=${solution.imageUrl} alt="example1" />
         <div>
           <p id="details-type">${solution.type}</p>
           <div id="info-wrapper">
             <div id="details-description">
-              <p id="description">
-              ${solution.description}
-              </p>
+              <p id="description">${solution.description}</p>
               <p id="more-info">
-              ${solution.moreInfo} <!--It have to be verified-->
+                ${solution.moreInfo || solution["more-info"]}
+                <!--It have to be verified-->
               </p>
             </div>
           </div>
-          <h3>Like Solution:<span id="like">>${likes}</span></h3>
-              ${
-                isOwner
-                  ? html` <!--Edit and Delete are only for creator-->
-                      <div id="action-buttons">
+          <h3>Like Solution:<span id="like">${likes}</span></h3>
+          <div id="action-buttons">
+            ${isOwner
+              ? html` <!--Edit and Delete are only for creator-->
                         <a href="/edit/${solution._id}" id="edit-btn">Edit</a>
                         <a
                           @click=${() => deleteSolution(solution._id)}
@@ -53,13 +46,13 @@ function detailsTemplate(solution, isOwner, token, isClick, likes) {
                           >Delete</a
                         >
                       </div>`
-                  : token && isClick
-                  ? html` <!--Bonus - Only for logged-in users ( not authors )-->
-                      <a @click=${() => likeSolution(solution._id)} id="like-btn"
-                        >Like</a
-                      >`
-                  : null
-              }
+              : token && isClick
+              ? html` <!--Bonus - Only for logged-in users ( not authors )-->
+                  <a @click=${() => likeSolution(solution._id)} id="like-btn"
+                    >Like</a
+                  >`
+              : null}
+          </div>
         </div>
       </div>
     </section>`;
