@@ -2,7 +2,7 @@ import { html, render } from "../../node_modules/lit-html/lit-html.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function tattooHomePage() {
+export default async function solutionHomePage() {
   render(homeTemplate(), mainEl);
 }
 
