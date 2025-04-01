@@ -1,0 +1,35 @@
+<!-- Details page -->
+<section id="details">
+    <div id="details-wrapper">
+      <img
+        id="details-img"
+        src=${solution.imageUrl}
+        alt="example1"
+      />
+      <div>
+        <p id="details-type">${solution.type}</p>
+        <div id="info-wrapper">
+          <div id="details-description">
+            <p id="description">
+            ${solution.description}
+            </p>
+            <p id="more-info">
+            ${solution.moreInfo} <!--It have to be verified-->
+            </p>
+          </div>
+        </div>
+        <h3>Like Solution:<span id="like">>${likes}</span></h3>
+            
+                 <!--Edit and Delete are only for creator-->
+                    <div id="action-buttons">
+                      <a href="/edit/${solution._id}" id="edit-btn">Edit</a>
+                      <a    id="delete-btn"
+                        >Delete</a
+                      >
+                    </div>`
+                 <!--Bonus - Only for logged-in users ( not authors )-->
+                    <a  id="like-btn"
+                      >Like</a>    
+        </div>
+      </div>
+</section>

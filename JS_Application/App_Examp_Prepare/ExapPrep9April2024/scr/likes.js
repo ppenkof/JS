@@ -1,10 +1,10 @@
 import itemsService from "./api/itemsService.js";
-//check if user has liked this tattoo
-export async function checkLikeTattooByUser(tattooId, userId) {
+//check if user has liked this solution
+export async function checkLikeSolutionByUser(solutionId, userId) {
   let isClick = false;
   let check = 0;
   try {
-    check =  await itemsService.getLikesByUser(tattooId, userId);
+    check =  await itemsService.getLikesByUser(solutionId, userId);
     check > 0 ? (isClick = false) : (isClick = true);
   } catch (err) {
     alert(err.message);
@@ -12,10 +12,10 @@ export async function checkLikeTattooByUser(tattooId, userId) {
   return isClick;
 }
 //get all likes
-export async function likeTattooByUser(tattooId, userId) {
+export async function likeSolutionByUser(solutionId, userId) {
   let check = 0;
   try {
-    check =  await itemsService.getLikes(tattooId);
+    check =  await itemsService.getLikes(solutionId);
   } catch (err) {
     alert(err.message);
   }
