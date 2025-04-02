@@ -3,35 +3,40 @@ import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function solutionDashboardPage() {
-  const solution = await itemsService.getAll();
-  console.log(solution);
-  render(dashboardTemplate(solution), mainEl);
+export default async function droneDashboardPage() {
+  const drone = await itemsService.getAll();
+  console.log(drone);
+  render(dashboardTemplate(drone), mainEl);
 }
 
-function dashboardTemplate(solution) {
+function dashboardTemplate(drone) {
   return html`
     <!-- Dashboard page -->
-    <h2>Solutions</h2>
-    ${solution.length > 0
+    <h3 class="heading">Marketplace</h3>
+    ${drone.length > 0
       ? html`
-          <section id="solutions"><!--s-->
-            ${solution.map((s) => solutionTemplate(s))}
+          <section id="dashboard"><!--s-->
+            ${drone.map((s) => solutionTemplate(s))}
           </section>
         `
       : html` <!-- Display an h2 if there are no posts -->
-          <h2 id="no-solution">No Solutions Added.</h2>`}
+              <h3 class="no-drones">No Drones Available</h3>`}
   `;
 }
-// it have to be checked if solution.objAtributes is correct
-function solutionTemplate(solution) {
-  return html` <div class="solution">
-    <img src=${solution.imageUrl} alt="example3" />
-    <div class="solution-info">
-      <h3 class="type">${solution.type}</h3>
-      <p class="description">${solution.description}</p>
-      <a class="details-btn" href="/details/${solution._id}">Learn More</a>
+// it have to be checked if drone.objAtributes is correct
+function solutionTemplate(drone) {
+  return html` 
+   <!-- Display a div with information about every post (if any)-->
+   <div class="drone">
+    <img src=${drone.imageUrl} alt="example1" />
+    <h3 class="model">${drone.model}</h3>
+    <div class="drone-info">
+      <p class="price">${drone.price}</p>
+      <p class="condition">${drone.condition}</p>
+      <p class="weight">${drone.weight}</p>
     </div>
-  </div>`;
+    <a class="details-btn" href="/details/${drone._id}">Details</a>
+  </div>
+  `;
 }
-//<!--<p class="solution-info"> ${solution.learnMore || solution["solution-info"]}</p>-->
+

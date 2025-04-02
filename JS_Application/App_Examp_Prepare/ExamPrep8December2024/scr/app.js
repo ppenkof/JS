@@ -1,24 +1,23 @@
 import page from '../node_modules/page/page.mjs';
 
-import solutionCreatePage from './views/create.js';
-import solutionDashboardPage from './views/dashboard.js';
-import solutionDetailsPage from './views/details.js';
-import solutionEditPage from './views/edit.js';
-import solutionHomePage from './views/home.js';
-import solutionLoginPage from './views/login.js';
-import solutionRegisterPage from './views/register.js';
-//import solutionSearchPage from './views/search.js';
-import solutionNavigation from './middlewares/navigation.js';
+import droneCreatePage from './views/create.js';
+import droneDashboardPage from './views/dashboard.js';
+import droneDetailsPage from './views/details.js';
+import droneEditPage from './views/edit.js';
+import droneHomePage from './views/home.js';
+import droneLoginPage from './views/login.js';
+import droneRegisterPage from './views/register.js';
+import droneNavigation from './middlewares/navigation.js';
 
-page(solutionNavigation);
-page('/', solutionHomePage);
-page('/register', solutionRegisterPage);
-page('/login', solutionLoginPage);
+page(droneNavigation);
 
-page('/dashboard', solutionDashboardPage);
-page('/create', solutionCreatePage);
-page('/details/:id', solutionDetailsPage);
-page('/edit/:id', solutionEditPage);
-//page('/search', solutionSearchPage);
+page('/', droneHomePage);
+page('/register', droneRegisterPage);
+page('/login', droneLoginPage);
+
+page('/dashboard', droneDashboardPage);
+page('/create', droneCreatePage);
+page('/details/:id', droneDetailsPage);
+page('/edit/:id', droneEditPage);
 
 page.start();

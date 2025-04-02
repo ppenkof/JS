@@ -1,76 +1,72 @@
 import { get, post, put, del } from "./requester.js";
-import { baseSolutionsUrl, baseBonusLikeUrl } from "../constants.js";
+import { baseDronesUrl} from "../constants.js";
 import { getUserId } from "../utils.js";
 
 const userId = getUserId();
 
 async function getAll() {
-  return await get(`${baseSolutionsUrl}?sortBy=_createdOn%20desc`);
+  return await get(`${baseDronesUrl}?sortBy=_createdOn%20desc`);
 }
 
-async function getById(solutionId) {
-  return await get(`${baseSolutionsUrl}/${solutionId}`);
+async function getById(droneId) {
+  return await get(`${baseDronesUrl}/${droneId}`);
 }
 
-async function getByTitle(solutionTitle) {
-  return await get(
-    `${baseSolutionsUrl}?where=title%20LIKE%20%22${solutionTitle}%22`
-  );
-}
+// async function getByTitle(droneTitle) {
+//   return await get(
+//     `${baseDronesUrl}?where=title%20LIKE%20%22${droneTitle}%22`
+//   );
+// }
 
-async function getLikesByUser(solutionId, userId) {
-  return await get(
-    `${baseBonusLikeUrl}?where=solutionId%3D%22${solutionId}%22%20and%20_ownerId%3D%22${userId}%22&count`
-  );
-}
+// async function getLikesByUser(droneId, userId) {
+//   return await get(
+//     `${baseBonusLikeUrl}?where=droneId%3D%22${droneId}%22%20and%20_ownerId%3D%22${userId}%22&count`
+//   );
+// }
 
-async function getLikes(solutionId) {
-  return await get(
-    `${baseBonusLikeUrl}?where=solutionId%3D%22${solutionId}%22&distinct=_ownerId&count`
-  );
-}
+// async function getLikes(droneId) {
+//   return await get(
+//     `${baseBonusLikeUrl}?where=droneId%3D%22${droneId}%22&distinct=_ownerId&count`
+//   );
+// }
 
-async function setLike(solutionId) {
-  return await post(`${baseBonusLikeUrl}`, { solutionId });
-}
+// async function setLike(droneId) {
+//   return await post(`${baseBonusLikeUrl}`, { droneId });
+// }
 
 async function create(solutionData) {
-  const {
-    "image-url": imageUrl,
-    "more-info": learnMore,
-    ...otherData
-  } = solutionData;
+  // const {
+  //   "image-url": imageUrl,
+  //   "more-info": learnMore,
+  //   ...otherData
+  // } = solutionData;
   
-  return await post(baseSolutionsUrl, { imageUrl, learnMore, ...otherData });
+  return await post(baseDronesUrl, {solutionData})//{ imageUrl, ...otherData });
 }
 
-async function update(solutionId, solutionData) {
-  const {
-    "image-url": imageUrl,
-    "more-info": learnMore,
-    ...otherData
-  } = solutionData;
+async function update(droneId, solutionData) {
+  // const {
+  //   "image-url": imageUrl,
+  //   "more-info": learnMore,
+  //   ...otherData
+  // } = solutionData;
 
-  return await put(`${baseSolutionsUrl}/${solutionId}`, {
-    imageUrl,
-    learnMore,
-    ...otherData,
-  });
+  return await put(`${baseDronesUrl}/${droneId}`, {solutionData})//{ imageUrl, learnMore, ...otherData});
 }
 
-async function deleteById(solutionId) {
-  await del(`${baseSolutionsUrl}/${solutionId}`);
+async function deleteById(droneId) {
+  await del(`${baseDronesUrl}/${droneId}`);
 }
 
 const itemsService = {
   getAll,
   getById,
-  getByTitle,
+  //getByTitle,
   create,
   update,
   deleteById,
-  getLikes,
-  getLikesByUser,
-  setLike,
+  // getLikes,
+  // getLikesByUser,
+  // setLike,
 };
 export default itemsService;

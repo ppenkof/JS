@@ -5,7 +5,7 @@ import usersService from "../api/usersService.js";
 
 const headerEl = document.querySelector("header");
 
-export default function solutionNavigation(ctx, next) {
+export default function droneNavigation(ctx, next) {
   //removeUserData();
   const token = getToken();
   render(navigationTemplate(token), headerEl);
@@ -15,25 +15,23 @@ export default function solutionNavigation(ctx, next) {
 function navigationTemplate(token) {
   return html`
     <!-- Navigation -->
-    <a id="logo" href="/"
-      ><img id="logo-img" src="/images/logo2.png" alt="logo" />
-    </a>
+    <a id="logo" href="/"><img id="logo" src="/images/logo2.png" alt="img" /></a>
     <nav>
       <div>
-        <a href="/dashboard">Solutions</a>
+        <a href="/dashboard">Marketplace</a>
       </div>
-
+  
       ${token
         ? html `<!-- Logged-in users -->
-            <div class="user">
-              <a href="/create">Add Solution</a>
-              <a @click=${logoutUser}>Logout</a>
-            </div>`
+        <div class="user">
+          <a href="/create">Sell</a>
+          <a @click=${logoutUser}>Logout</a>
+        </div>`
         : html `<!-- Guest users -->
-            <div class="guest">
-              <a href="/login">Login</a>
-              <a href="/register">Register</a>
-            </div>`}
+        <div class="guest">
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        </div>`}
     </nav>
   `;
 }
