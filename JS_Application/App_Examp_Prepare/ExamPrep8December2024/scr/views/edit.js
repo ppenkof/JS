@@ -4,50 +4,66 @@ import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function solutionEditPage(ctx) {
-  const solutionId = ctx.params.id;
-  const solution = await itemsService.getById(solutionId);
-  render(editTemplate(solution), mainEl);
+export default async function droneEditPage(ctx) {
+  const droneId = ctx.params.id;
+  const drone = await itemsService.getById(droneId);
+  render(editTemplate(drone), mainEl);
 }
 
-function editTemplate(solution) {
-  //console.log(solution);
-  return html`
-    <!-- Edit Page (Only for logged-in users) -->
+function editTemplate(drone) {
+  //console.log(drone);
+  return html` <!-- Edit Page (Only for logged-in users) -->
     <section id="edit">
-      <div class="form">
-        <img class="border" src="/images/border.png" alt="" />
-        <h2>Edit Solution</h2>
-        <form @submit=${(e) => editSolution(e, solution._id)} class="edit-form">
+      <div class="form form-item">
+        <h2>Edit Offer</h2>
+        <form @submit=${(e) => editDrone(e, drone._id)} class="edit-form">
           <input
             type="text"
-            name="type"
-            id="type"
-            placeholder="Solution Type"
-            value=${solution.type}
+            name="model"
+            id="model"
+            placeholder="Drone Model"
+            value=${drone.model}
           />
           <input
             type="text"
-            name="image-url"
-            id="image-url"
+            name="imageUrl"
+            id="imageUrl"
             placeholder="Image URL"
-            value=${solution.imageUrl || solution["image-url"]}
+            value=${drone.imageUrl}
+          />
+          <input
+            type="number"
+            name="price"
+            id="price"
+            placeholder="Price"
+            value=${drone.price}
+          />
+          <input
+            type="number"
+            name="weight"
+            id="weight"
+            placeholder="Weight"
+            value=${drone.weight}
+          />
+          <input
+            type="number"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number for Contact"
+            value=${drone.phone}
+          />
+          <input
+            type="text"
+            name="condition"
+            id="condition"
+            placeholder="Condition"
+            value=${drone.condition}
           />
           <textarea
-            id="description"
             name="description"
+            id="description"
             placeholder="Description"
-            rows="2"
-            cols="10"
-            .value=${solution.description}
-          ></textarea>
-          <textarea
-            id="more-info"
-            name="more-info"
-            placeholder="more Info"
-            rows="2"
-            cols="10"
-            .value=${solution.learnMore || solution["more-info"]} 
+            .value=${drone.description}
           ></textarea>
           <button type="submit">Edit</button>
         </form>
@@ -55,20 +71,20 @@ function editTemplate(solution) {
     </section>`;
 }
 
-async function editSolution(e, solutionId) {
+async function editDrone(e, droneId) {
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
-  const solutionData = Object.fromEntries(formData);
-  console.log(solutionData);
-  if (Object.values(solutionData).some((val) => val === "")) {
+  const droneData = Object.fromEntries(formData);
+  console.log(droneData);
+  if (Object.values(droneData).some((val) => val === "")) {
     return alert("All fields are required!");
   }
 
   try {
-    const result = await itemsService.update(solutionId, solutionData);
+    const result = await itemsService.update(droneId, droneData);
 
-    page.redirect(`/details/${solutionId}`);
+    page.redirect(`/details/${droneId}`);
   } catch (err) {
     alert(err.message);
   }
