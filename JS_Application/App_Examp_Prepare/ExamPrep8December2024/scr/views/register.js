@@ -4,16 +4,14 @@ import usersService from "../api/usersService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function solutionRegisterPage() {
+export default async function droneRegisterPage() {
   render(registerTemplate(), mainEl);
 }
 
 function registerTemplate() {
-  return html`
-    <!-- Register Page (Only for Guest users) -->
+  return html` <!-- Register Page (Only for Guest users) -->
     <section id="register">
       <div class="form">
-        <img class="border" src="./images/border.png" alt="" />
         <h2>Register</h2>
         <form @submit=${registerUser} class="register-form">
           <input
@@ -38,8 +36,7 @@ function registerTemplate() {
           <p class="message">Already registered? <a href="/login">Login</a></p>
         </form>
       </div>
-    </section>
-  `;
+    </section>`;
 }
 
 async function registerUser(e) {
