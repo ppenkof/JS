@@ -1,7 +1,6 @@
 import { getToken } from "../utils.js";
 
 async function request(method, url, data) {
-  console.log(url);
   const params = {
     method,
     headers: {},

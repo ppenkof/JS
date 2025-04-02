@@ -30,7 +30,7 @@ function detailsTemplate(solution, isOwner, token, isClick, likes) {
             <div id="details-description">
               <p id="description">${solution.description}</p>
               <p id="more-info">
-                ${solution.moreInfo || solution["more-info"]}
+                ${solution.learnMore || solution["more-info"]}
                 <!--It have to be verified-->
               </p>
             </div>

@@ -15,7 +15,7 @@ function createTemplate() {
     <!-- Create Page (Only for logged-in users) -->
     <section id="create">
       <div class="form">
-        <img class="border" src="./images/border.png" alt="" />
+        <img class="border" src="/images/border.png" alt="" />
         <h2>Add Solution</h2>
         <form @submit=${addSolution} class="create-form">
           <input

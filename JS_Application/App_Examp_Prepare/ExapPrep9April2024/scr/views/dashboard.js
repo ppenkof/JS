@@ -5,6 +5,7 @@ const mainEl = document.querySelector("main");
 
 export default async function solutionDashboardPage() {
   const solution = await itemsService.getAll();
+  console.log(solution);
   render(dashboardTemplate(solution), mainEl);
 }
 
@@ -33,3 +34,4 @@ function solutionTemplate(solution) {
     </div>
   </div>`;
 }
+//<!--<p class="solution-info"> ${solution.learnMore || solution["solution-info"]}</p>-->

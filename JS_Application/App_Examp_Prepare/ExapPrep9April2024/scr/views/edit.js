@@ -16,7 +16,7 @@ function editTemplate(solution) {
     <!-- Edit Page (Only for logged-in users) -->
     <section id="edit">
       <div class="form">
-        <img class="border" src="./images/border.png" alt="" />
+        <img class="border" src="/images/border.png" alt="" />
         <h2>Edit Solution</h2>
         <form @submit=${(e) => editSolution(e, solution._id)} class="edit-form">
           <input
@@ -31,7 +31,7 @@ function editTemplate(solution) {
             name="image-url"
             id="image-url"
             placeholder="Image URL"
-            value=${solution.imageUrl}
+            value=${solution.imageUrl || solution["image-url"]}
           />
           <textarea
             id="description"
@@ -47,7 +47,7 @@ function editTemplate(solution) {
             placeholder="more Info"
             rows="2"
             cols="10"
-            .value=${solution.moreInfo || solution["more-info"]}
+            .value=${solution.learnMore || solution["more-info"]} 
           ></textarea>
           <button type="submit">Edit</button>
         </form>

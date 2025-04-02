@@ -16,7 +16,7 @@ function navigationTemplate(token) {
   return html`
     <!-- Navigation -->
     <a id="logo" href="/"
-      ><img id="logo-img" src="./images/logo2.png" alt="logo" />
+      ><img id="logo-img" src="/images/logo2.png" alt="logo" />
     </a>
     <nav>
       <div>
