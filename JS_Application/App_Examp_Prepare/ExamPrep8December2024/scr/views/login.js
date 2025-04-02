@@ -4,7 +4,7 @@ import usersService from "../api/usersService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function solutionLoginPage() {
+export default async function droneLoginPage() {
   render(loginTemplate(), mainEl);
 }
 
