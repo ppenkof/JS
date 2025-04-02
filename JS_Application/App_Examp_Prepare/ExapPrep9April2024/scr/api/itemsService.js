@@ -35,14 +35,25 @@ async function setLike(solutionId) {
 }
 
 async function create(solutionData) {
-  const { "image-url": imageUrl, ...otherData } = solutionData;
-  return await post(baseSolutionsUrl, { imageUrl, ...otherData });
+  const {
+    "image-url": imageUrl,
+    "more-info": learnMore,
+    ...otherData
+  } = solutionData;
+  
+  return await post(baseSolutionsUrl, { imageUrl, learnMore, ...otherData });
 }
 
 async function update(solutionId, solutionData) {
-  const { "image-url": imageUrl, ...otherData } = solutionData;
+  const {
+    "image-url": imageUrl,
+    "more-info": learnMore,
+    ...otherData
+  } = solutionData;
+
   return await put(`${baseSolutionsUrl}/${solutionId}`, {
     imageUrl,
+    learnMore,
     ...otherData,
   });
 }

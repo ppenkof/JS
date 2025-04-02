@@ -15,7 +15,7 @@ function dashboardTemplate(solution) {
     <h2>Solutions</h2>
     ${solution.length > 0
       ? html`
-          <section id="solution">
+          <section id="solutions"><!--s-->
             ${solution.map((s) => solutionTemplate(s))}
           </section>
         `
