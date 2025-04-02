@@ -5,8 +5,7 @@ import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function solutionCreatePage() {
-  //const solutionId = ctx.params.id; //here you can decide if user is logged!!!
+export default async function droneCreatePage() {
   render(createTemplate(), mainEl);
 }
 
@@ -14,55 +13,59 @@ function createTemplate() {
   return html`
     <!-- Create Page (Only for logged-in users) -->
     <section id="create">
-      <div class="form">
-        <img class="border" src="/images/border.png" alt="" />
-        <h2>Add Solution</h2>
-        <form @submit=${addSolution} class="create-form">
+      <div class="form form-item">
+        <h2>Add Drone Offer</h2>
+        <form @submit=${addDrone} class="create-form">
           <input
             type="text"
-            name="type"
-            id="type"
-            placeholder="Solution Type"
+            name="model"
+            id="model"
+            placeholder="Drone Model"
           />
           <input
             type="text"
-            name="image-url"
-            id="image-url"
+            name="imageUrl"
+            id="imageUrl"
             placeholder="Image URL"
           />
+          <input type="number" name="price" id="price" placeholder="Price" />
+          <input type="number" name="weight" id="weight" placeholder="Weight" />
+          <input
+            type="number"
+            name="phone"
+            id="phone"
+            placeholder="Phone Number for Contact"
+          />
+          <input
+            type="text"
+            name="condition"
+            id="condition"
+            placeholder="Condition"
+          />
           <textarea
-            id="description"
             name="description"
+            id="description"
             placeholder="Description"
-            rows="2"
-            cols="10"
           ></textarea>
-          <textarea
-            id="more-info"
-            name="more-info"
-            placeholder="more Info"
-            rows="2"
-            cols="10"
-          ></textarea>
-          <button type="submit">Add Solution</button>
+          <button type="submit">Add</button>
         </form>
       </div>
     </section>
   `;
 }
 
-async function addSolution(e) {
+async function addDrone(e) {
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
-  const solutionData = Object.fromEntries(formData);
-  console.log(solutionData);
-  if (Object.values(solutionData).some((val) => val === "")) {
+  const droneData = Object.fromEntries(formData);
+  console.log(droneData);
+  if (Object.values(droneData).some((val) => val === "")) {
     return alert("All fields are required!");
   }
 
   try {
-    const result = await itemsService.create(solutionData);
+    const result = await itemsService.create(droneData);
     page.redirect("/dashboard");
   } catch (err) {
     alert(err.message);
