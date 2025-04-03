@@ -4,6 +4,7 @@ import page from "../../node_modules/page/page.mjs";
 import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
+//const mainEl = document.getElementById("main-element");
 
 export default async function droneCreatePage() {
   render(createTemplate(), mainEl);
@@ -50,8 +51,7 @@ function createTemplate() {
           <button type="submit">Add</button>
         </form>
       </div>
-    </section>
-  `;
+    </section>`;
 }
 
 async function addDrone(e) {

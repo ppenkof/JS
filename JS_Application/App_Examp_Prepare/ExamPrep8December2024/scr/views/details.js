@@ -8,17 +8,17 @@ const mainEl = document.querySelector("main");
 
 export default async function droneDetailsPage(ctx) {
   const droneId = ctx.params.id;
-  const token = getToken();
+  //const token = getToken();
   const drone = await itemsService.getById(droneId);
   const isOwner = checkIsOwner(drone);
   //const user = getUserId();
   // let isClick = await checkLikedroneByUser(droneId, user);
   // const likes = await likedroneByUser(droneId);
 
-  render(detailsTemplate(drone, isOwner, token), mainEl);
+  render(detailsTemplate(drone, isOwner), mainEl);
 }
 
-function detailsTemplate(drone, isOwner, token) {
+function detailsTemplate(drone, isOwner) {
   return html`<!-- Details page -->
     <section id="details">
       <div id="details-wrapper">

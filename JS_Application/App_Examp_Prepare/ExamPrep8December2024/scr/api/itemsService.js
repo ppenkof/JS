@@ -34,24 +34,20 @@ async function getById(droneId) {
 //   return await post(`${baseBonusLikeUrl}`, { droneId });
 // }
 
-async function create(solutionData) {
-  // const {
-  //   "image-url": imageUrl,
-  //   "more-info": learnMore,
-  //   ...otherData
-  // } = solutionData;
+async function create(droneData) {
+  const {
+    ...otherData
+  } = droneData;
   
-  return await post(baseDronesUrl, {solutionData})//{ imageUrl, ...otherData });
+  return await post(baseDronesUrl, {...otherData})//{ imageUrl, ...otherData });
 }
 
-async function update(droneId, solutionData) {
-  // const {
-  //   "image-url": imageUrl,
-  //   "more-info": learnMore,
-  //   ...otherData
-  // } = solutionData;
+async function update(droneId, droneData) {
+  const {
+    ...otherData
+  } = droneData;
 
-  return await put(`${baseDronesUrl}/${droneId}`, {solutionData})//{ imageUrl, learnMore, ...otherData});
+  return await put(`${baseDronesUrl}/${droneId}`, {...otherData})//{ imageUrl, learnMore, ...otherData});
 }
 
 async function deleteById(droneId) {

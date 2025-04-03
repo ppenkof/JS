@@ -50,7 +50,7 @@ async function registerUser(e) {
   }
 
   if (userData["password"] !== userData["re-password"]) {
-    return alert("Passwords must match!");
+    return alert("Passwords don\'t match!");
   }
 
   try {

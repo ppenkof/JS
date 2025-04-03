@@ -7,11 +7,13 @@ const mainEl = document.querySelector("main");
 export default async function droneEditPage(ctx) {
   const droneId = ctx.params.id;
   const drone = await itemsService.getById(droneId);
+  console.log(drone);
+console.log(droneId);
   render(editTemplate(drone), mainEl);
 }
 
 function editTemplate(drone) {
-  //console.log(drone);
+  console.log(drone);
   return html` <!-- Edit Page (Only for logged-in users) -->
     <section id="edit">
       <div class="form form-item">
