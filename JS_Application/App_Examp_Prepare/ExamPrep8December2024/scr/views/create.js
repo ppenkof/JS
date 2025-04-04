@@ -1,6 +1,6 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js";
 import page from "../../node_modules/page/page.mjs";
-
+import errorHandling from "../notification.js";
 import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
@@ -61,13 +61,13 @@ async function addDrone(e) {
   const droneData = Object.fromEntries(formData);
   console.log(droneData);
   if (Object.values(droneData).some((val) => val === "")) {
-    return alert("All fields are required!");
+    throw errorHandling("All fields are required!");
   }
 
   try {
     const result = await itemsService.create(droneData);
     page.redirect("/dashboard");
   } catch (err) {
-    alert(err.message);
+    throw errorHandling(err.message);
   }
 }

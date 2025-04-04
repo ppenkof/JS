@@ -1,6 +1,7 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js";
 import page from "../../node_modules/page/page.mjs";
 import usersService from "../api/usersService.js";
+import errorHandling from "../notification.js";
 
 const mainEl = document.querySelector("main");
 
@@ -46,17 +47,17 @@ async function registerUser(e) {
   const userData = Object.fromEntries(formData);
 
   if (!userData.email || !userData.password || !userData["re-password"]) {
-    return alert("All fields are required!");
+    throw errorHandling("All fields are required!");
   }
 
   if (userData["password"] !== userData["re-password"]) {
-    return alert("Passwords don\'t match!");
+    throw errorHandling("Passwords don\'t match!");
   }
 
   try {
     const result = await usersService.register(userData);
     page.redirect("/");
   } catch (err) {
-    alert(err.message);
+    throw errorHandling(err.message);
   }
 }

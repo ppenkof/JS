@@ -1,6 +1,7 @@
 import { html, render } from "../../node_modules/lit-html/lit-html.js";
 import page from "../../node_modules/page/page.mjs";
 import itemsService from "../api/itemsService.js";
+import errorHandling from "../notification.js";
 
 const mainEl = document.querySelector("main");
 
@@ -8,7 +9,7 @@ export default async function droneEditPage(ctx) {
   const droneId = ctx.params.id;
   const drone = await itemsService.getById(droneId);
   console.log(drone);
-console.log(droneId);
+  console.log(droneId);
   render(editTemplate(drone), mainEl);
 }
 
@@ -80,7 +81,7 @@ async function editDrone(e, droneId) {
   const droneData = Object.fromEntries(formData);
   console.log(droneData);
   if (Object.values(droneData).some((val) => val === "")) {
-    return alert("All fields are required!");
+    throw errorHandling("All fields are required!");
   }
 
   try {
@@ -88,6 +89,6 @@ async function editDrone(e, droneId) {
 
     page.redirect(`/details/${droneId}`);
   } catch (err) {
-    alert(err.message);
+    throw errorHandling(err.message);
   }
 }
