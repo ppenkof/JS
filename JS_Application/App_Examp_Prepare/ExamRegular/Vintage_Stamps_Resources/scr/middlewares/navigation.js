@@ -5,33 +5,34 @@ import usersService from "../api/usersService.js";
 
 const headerEl = document.querySelector("header");
 
-export default function tattooNavigation(ctx, next) {
-  //removeUserData();
+export default function stampNavigation(ctx, next) {
   const token = getToken();
   render(navigationTemplate(token), headerEl);
   next();
 }
 
 function navigationTemplate(token) {
-  return html`
-    <!-- Navigation -->
+  return html` <!-- Navigation -->
     <a id="logo" href="/"
-      ><img id="logo-img" src="./images/logo.png" alt="logo" />
+      ><img id="logo-img" src="/images/logo.webp" alt="logo" />
     </a>
     <nav>
-      <a href="/dashboard">Collection</a>
+      <div>
+        <a href="/dashboard">Collection</a>
+      </div>
 
       ${token
-        ? html`<div class="user">
-            <a href="/create">Add Tattoo</a>
-            <a @click=${logoutUser}>Logout</a>
-          </div>`
-        : html`<div class="guest">
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-          </div>`}
-    </nav>
-  `;
+        ? html` <!-- Logged-in users -->
+            <div class="user">
+              <a href="/create">Add Stamp</a>
+              <a @click=${logoutUser}>Logout</a>
+            </div>`
+        : html` <!-- Guest users -->
+            <div class="guest">
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+            </div>`}
+    </nav>`;
 }
 
 async function logoutUser() {

@@ -1,24 +1,22 @@
 import page from '../node_modules/page/page.mjs';
 
-import tattooCreatePage from './views/create.js';
-import tattooDashboardPage from './views/dashboard.js';
-import tattooDetailsPage from './views/details.js';
-import tattooEditPage from './views/edit.js';
-import tattooHomePage from './views/home.js';
-import tattooLoginPage from './views/login.js';
-import tattooRegisterPage from './views/register.js';
-//import tattooSearchPage from './views/search.js';
-import tattooNavigation from './middlewares/navigation.js';
+import stampCreatePage from './views/create.js';
+import stampDashboardPage from './views/dashboard.js';
+import stampDetailsPage from './views/details.js';
+import stampEditPage from './views/edit.js';
+import stampHomePage from './views/home.js';
+import stampLoginPage from './views/login.js';
+import stampRegisterPage from './views/register.js';
+import stampNavigation from './middlewares/navigation.js';
 
-page(tattooNavigation);
-page('/', tattooHomePage);
-page('/register', tattooRegisterPage);
-page('/login', tattooLoginPage);
+page(stampNavigation);
+page('/', stampHomePage);
+page('/register', stampRegisterPage);
+page('/login', stampLoginPage);
 
-page('/dashboard', tattooDashboardPage);
-page('/create', tattooCreatePage);
-page('/details/:id', tattooDetailsPage);
-page('/edit/:id', tattooEditPage);
-//page('/search', tattooSearchPage);
+page('/dashboard', stampDashboardPage);
+page('/create', stampCreatePage);
+page('/details/:id', stampDetailsPage);
+page('/edit/:id', stampEditPage);
 
 page.start();
