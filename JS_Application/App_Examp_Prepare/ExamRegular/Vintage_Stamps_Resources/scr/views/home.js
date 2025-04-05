@@ -8,17 +8,13 @@ export default async function tattooHomePage() {
 
 function homeTemplate() {
   return html`
-    <section id="home">
-      <div id="home-wrapper">
-        <p id="home-intro">
-          Whether you're a seasoned artist, a collector of ink, or someone
-          looking for inspiration for their first tattoo,
-          <span>Tattoo Masters</span> is your community. Share your
-          masterpieces, discover incredible designs, and connect with artists
-          and aficionados from around the world.
-        </p>
-        <a href="/register" id="join-us">Join Us!</a> <!--should navigate to register page-->
-      </div>
-    </section>
+      <!-- Home page -->
+      <section id="home">
+        <h1>
+          Explore a world of rare and historic vintage stamps, where collectors connect to exchange knowledge and unique
+          finds. Preserve the art of philately while discovering hidden gems from different eras and regions.
+        </h1>
+        <img id="home-img" src="/images/logo.webp" alt="home-img" />
+      </section>
   `; 
 }
