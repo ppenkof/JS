@@ -4,9 +4,9 @@ import itemsService from "../api/itemsService.js";
 const mainEl = document.querySelector("main");
 
 export default async function stampDashboardPage() {
-  const tattoos = await itemsService.getAll();
-  //console.log(tattoos); // it have to check totoo.objAtributes
-  render(dashboardTemplate(tattoos), mainEl);
+  const stamps = await itemsService.getAll();
+  //console.log(stamps); // it have to check totoo.objAtributes
+  render(dashboardTemplate(stamps), mainEl);
 }
 
 function dashboardTemplate(stamps) {
@@ -16,14 +16,14 @@ function dashboardTemplate(stamps) {
     ${stamps.length > 0
       ? html`
           <section id="collection">
-            ${stampss.map((s) => stampTemplate(s))}
+            ${stamps.map((s) => stampTemplate(s))}
           </section>
         `
       : html`<!-- Display an h2 if there are no posts -->
           <h2 id="no-stamp">No Stamps Added.</h2>`}
   `;
 }
-// it have to be checked if totoo.objAtributes is correct
+ 
 function stampTemplate(stamp) {
   return html`
     <!-- Display a div with information about every post (if any)-->

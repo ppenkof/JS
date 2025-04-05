@@ -1,6 +1,6 @@
 import itemsService from "./api/itemsService.js";
 //check if user has liked this item
-export async function checkLikestampByUser(stampId, userId) {
+export async function checkLikeStampByUser(stampId, userId) {
   let isClick = false;
   let check = 0;
   try {
@@ -12,7 +12,7 @@ export async function checkLikestampByUser(stampId, userId) {
   return isClick;
 }
 //get all likes
-export async function likestampByUser(stampId, userId) {
+export async function likeStampByUser(stampId, userId) {
   let check = 0;
   try {
     check =  await itemsService.getLikes(stampId);
