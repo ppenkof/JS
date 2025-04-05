@@ -11,64 +11,62 @@ export default async function tattooEditPage(ctx) {
 }
 
 function editTemplate(tattoo) {
-  return html`<section id="edit">
-    <div class="form">
-      <h2>Edit tattoo</h2>
-      <form @submit=${(e) => editTattoo(e, tattoo._id)} class="edit-form">
-        <input
-          type="text"
-          name="type"
-          id="type"
-          placeholder="Tattoo Type"
-          value=${tattoo.type}
-        />
-        <input
-          type="text"
-          name="image-url"
-          id="image-url"
-          placeholder="Image URL"
-          value=${tattoo.imageUrl}
-        />
-        <textarea
-          id="description"
-          name="description"
-          placeholder="Description"
-          rows="2"
-          cols="10"
-          .value=${tattoo.description}
-        ></textarea>
-        <select
-          id="user-type"
-          name="user-type"
-          .value=${tattoo["user-type"] || tattoo.userType}
-        >
-          <option value="" disabled selected>Select your role</option>
-          <!---->
-          <option value="Tattoo Artist">Tattoo Artist</option>
-          <option value="Tattoo Enthusiast">Tattoo Enthusiast</option>
-          <option value="First Time in Tattoo">First Time in Tattoo</option>
-          <option value="Tattoo Collector">Tattoo Collector</option>
-        </select>
-        <button type="submit">Edit</button>
-      </form>
-    </div>
-  </section>`;
+  return html`<
+    <!-- Edit Page (Only for logged-in users) -->
+    <section id="edit">
+      <div class="form">
+        <h2>Edit Post Stamp</h2>
+        <form @submit=${(e) => editStamp(e, stamp._id)} class="edit-form">
+          <input
+            type="text"
+            name="name-input"
+            id="name"
+            placeholder="Stamp Name"
+            value=${stamp.name}
+          />
+          <input
+            type="text"
+            name="image-url-input"
+            id="image-url"
+            placeholder="Image URL"
+            value=${stamp.imageUrl}
+          />
+          <input
+            type="number"
+            id="year-input"
+            name="year-input"
+            placeholder="Year"
+            value=${stamp.year}
+          />
+          <textarea
+            id="more-info"
+            name="more-info-textarea"
+            placeholder="More Info"
+            rows="8"
+            cols="10"
+            .value=${stamp.learnMore}
+          ></textarea>
+          <!-- it have to be checked obj.properties -->
+          <button type="submit">Edit</button>
+        </form>
+      </div>
+    </section> `;
 }
 
-async function editTattoo(e, tattooId) {
+async function editStamp(e, stampId) {
   e.preventDefault();
 
   const formData = new FormData(e.currentTarget);
-  const tattooData = Object.fromEntries(formData);
-  console.log(tattooData);
-  if (Object.values(tattooData).some((val) => val === "")) {
+  const stampData = Object.fromEntries(formData);
+  console.log(stampData);
+  if (Object.values(stampData).some((val) => val === "")) {
     return alert("All fields are required!");
   }
 
   try {
-    const result = await itemsService.update(tattooId, tattooData);
+    const result = await itemsService.update(stampId, stampData);
 
-    page.redirect(`/details/${tattooId}`);
+    page.redirect(`/details/${stampId}`);
   } catch (err) {
     alert(err.message);
   }
