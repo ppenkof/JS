@@ -12,7 +12,7 @@ export async function checkLikeStampByUser(stampId, userId) {
   return isClick;
 }
 //get all likes
-export async function likeStampByUser(stampId, userId) {
+export async function likeStampByUser(stampId) {
   let check = 0;
   try {
     check =  await itemsService.getLikes(stampId);

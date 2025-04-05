@@ -4,13 +4,13 @@ import itemsService from "../api/itemsService.js";
 
 const mainEl = document.querySelector("main");
 
-export default async function tattooEditPage(ctx) {
-  const tattooId = ctx.params.id;
-  const tattoo = await itemsService.getById(tattooId);
-  render(editTemplate(tattoo), mainEl);
+export default async function stampEditPage(ctx) {
+  const stampId = ctx.params.id;
+  const stamp = await itemsService.getById(stampId);
+  render(editTemplate(stamp), mainEl);
 }
 
-function editTemplate(tattoo) {
+function editTemplate(stamp) {
   return html`<
     <!-- Edit Page (Only for logged-in users) -->
     <section id="edit">

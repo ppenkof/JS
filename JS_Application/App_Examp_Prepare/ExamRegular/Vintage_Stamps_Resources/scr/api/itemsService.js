@@ -18,30 +18,30 @@ async function getByTitle(stampTitle) {
   );
 }
 
-async function getLikesByUser(stampId, userId) {
+async function getLikesByUser(stampsId, userId) {
   return await get(
-    `${baseBonusStampsUrl}?where=stampId%3D%22${stampId}%22%20and%20_ownerId%3D%22${userId}%22&count`
+    `${baseBonusStampsUrl}?where=stampsId%3D%22${stampsId}%22%20and%20_ownerId%3D%22${userId}%22&count`
   );
 }
 
-async function getLikes(stampId) {
+async function getLikes(stampsId) {
   return await get(
-    `${baseBonusStampsUrl}?where=stampId%3D%22${stampId}%22&distinct=_ownerId&count`
+    `${baseBonusStampsUrl}?where=stampsId%3D%22${stampsId}%22&distinct=_ownerId&count`
   );
 }
 
-async function setLike(stampId) {
-  return await post(`${baseBonusStampsUrl}`, { stampId });
+async function setLike(stampsId) {
+  return await post(`${baseBonusStampsUrl}`, { stampsId });
 }
 
 async function create(stampData) {
-  const { "image-url": imageUrl, ...otherData } = stampData;
-  return await post(baseStampsUrl, { imageUrl, ...otherData });
+  const { "image-url-input": imageUrl,"more-info-textarea": learnMore, "name-input": name, "year-input":year, ...otherData } = stampData;
+  return await post(baseStampsUrl, { imageUrl, learnMore, name, year, ...otherData });
 }
 
 async function update(stampId, stampData) {
-  const { "image-url": imageUrl, ...otherData } = stampData;
-  return await put(`${baseStampsUrl}/${stampId}`, { imageUrl, ...otherData });
+  const { "image-url-input": imageUrl, "more-info-textarea": learnMore, "name-input": name, "year-input":year, ...otherData } = stampData;
+  return await put(`${baseStampsUrl}/${stampId}`, { imageUrl, learnMore, name, year, ...otherData });
 }
 
 async function deleteById(stampId) {

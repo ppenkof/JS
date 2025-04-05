@@ -15,7 +15,8 @@ export default async function stampDetailsPage(ctx) {
   const user = getUserId();
   let isClick = await checkLikeStampByUser(stampId, user);
   const likes = await likeStampByUser(stampId);
-
+  console.log(stampId);
+ 
   render(detailsTemplate(stamp, isOwner, token, isClick, likes), mainEl);
 }
 

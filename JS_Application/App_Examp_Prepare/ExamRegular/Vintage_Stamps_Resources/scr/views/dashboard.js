@@ -5,7 +5,7 @@ const mainEl = document.querySelector("main");
 
 export default async function stampDashboardPage() {
   const stamps = await itemsService.getAll();
-  //console.log(stamps); // it have to check totoo.objAtributes
+  console.log(stamps); // it have to check totoo.objAtributes
   render(dashboardTemplate(stamps), mainEl);
 }
 
