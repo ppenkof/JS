@@ -5,3 +5,4 @@ let bool = true;
 if (bool) {
     console.log(num + Number(str));
 }
+//# sourceMappingURL=file.js.map

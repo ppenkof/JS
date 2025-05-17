@@ -6,6 +6,6 @@
     "outDir": "./dist" ,
     "skipLibCheck": true ,
     "strict": true ,
-    "sourceMap": true ,
+    "sourceMap": true , //debug execution
   }
 }
