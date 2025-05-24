@@ -1,0 +1,24 @@
+.highlight{
+    color: blueviolet;
+}
+div#special{
+    background-color: orange; 
+    box-shadow: 0 0 0.5em 0.5em rgba(0, 0, 0, 0.2);
+    padding: 0.1em;
+}
+details[open] summary{
+    color: red;
+    font-size: 1.3em;
+}
+a{
+    color: rgb(79, 192, 79);
+}
+p.someclass1.someclass2.someclass3{
+    color: blue;
+}
+a[href^="/"]{
+    color:pink
+}
+a[href^="http://SoftUni.bg"]{
+    color:orangered
+}
