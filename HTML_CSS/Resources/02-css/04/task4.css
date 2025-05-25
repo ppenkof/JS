@@ -1,0 +1,20 @@
+header a{
+    text-decoration: none;
+}
+header nav a{
+    color: orange;
+}
+header :hover{
+    color: rgb(78, 167, 78);
+}
+main.site-content > .service{
+ background: lightblue;
+}
+.service + .service{
+    background: red;
+    font-size: bold;
+}
+.service:first-of-type{
+    /*background: red;*/
+    font-size: bold;
+} 

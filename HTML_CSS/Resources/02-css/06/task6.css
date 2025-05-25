@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    padding: 3em;
+}
+.site-header,
+.site-content .section,
+.site-footer {
+    padding: 2em;
+    border: 1px solid #ccc;
+}
+.site-footer,
+.site-content .section {
+    margin-top: 0.5em;
+}
+.site-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+nav ul li{
+    display: inline-block;
+}
+a{
+    color: #ccc;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(39, 31, 31);
+    text-decoration: underline;
+}
+a:active{
+    color: red;
+    /* text-decoration: underline; */
+}
+a:visited{
+    color: purple;
+}
