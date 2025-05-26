@@ -1,0 +1,9 @@
+time, span {
+    font-style: italic;
+    color: #666;
+}
+
+main p {
+    padding: 0 1em 0 0;
+    margin: 0 1em 0 0;
+}

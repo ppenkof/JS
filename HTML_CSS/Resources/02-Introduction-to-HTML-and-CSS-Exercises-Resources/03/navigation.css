@@ -1,0 +1,13 @@
+*{
+    /* box-sizing: border-box; */
+    text-decoration: underline;
+}
+a{
+    color: blue;
+}
+a:hover{
+    color: red;
+}
+a:active{
+    color: green;
+}
