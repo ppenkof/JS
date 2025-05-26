@@ -1,0 +1,27 @@
+div{
+    border: 2px solid black;
+     width:auto;
+     padding: 0.5em;
+}
+
+.uniform{
+  margin: 40px;
+}
+.non-uniform{
+    margin: 10px 20px 30px 40px;
+  }
+.percentage{
+    margin: -20px;
+    padding: 20px 20px 0 30px;
+    position: absolute;
+    top: 18em;
+    left: 3em;
+    right:3em;
+
+  }
+ 
+  body{
+    border: 2px solid black;
+    display: block;
+    height: 400px;
+  }
