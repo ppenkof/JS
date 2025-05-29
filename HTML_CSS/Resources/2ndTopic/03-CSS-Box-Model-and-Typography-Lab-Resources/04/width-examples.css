@@ -1,0 +1,20 @@
+.fixed{
+    width: 300px;
+}
+.percentage{
+    width: 50%;
+}
+.viewport{
+    width: 50vw;
+}
+.limited{
+    min-width: 100px;
+    max-width: 300px;
+}
+div {
+    box-sizing: border-box;
+    border: 2px solid black;
+    padding: 0 1em;
+    margin: 1em;
+    width: auto;
+}
