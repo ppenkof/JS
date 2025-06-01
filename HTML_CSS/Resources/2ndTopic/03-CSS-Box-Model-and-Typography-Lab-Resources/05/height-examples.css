@@ -1,0 +1,40 @@
+div{
+    border: 2px solid black;
+    padding: 0 0.4em;
+    margin: 0.5em 0;
+    max-width: 100%;
+    min-width:98%;
+    display: block;
+    
+}
+.fixed{
+    width: 200px;
+    height:100%;
+}
+.percentage{
+    width: 50%;
+}
+.viewport{
+    width: 50vw;
+    min-height: 15vw;
+}
+.limited{
+    min-width: 100px;
+    max-width: 300px;
+    min-height: 15vw;
+
+}
+/* .limited::after
+.fixed::before{
+    display: block;
+    min-width:100%;
+    height: 100%;
+    background-color: blue;
+} */
+body{
+    box-sizing: border-box;
+    border: 2px solid black;
+    height: auto;
+    padding: 0 0.5em;
+    margin: 0.5em;
+}
