@@ -1,0 +1,45 @@
+.item{
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: #ccc; /* Just for visibility */
+    padding: 1em;    
+    /* flex-grow: 0; */
+    flex-basis: 100px;
+    
+
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;  
+    flex-direction: row;
+    align-items: flex-start; 
+    border: 2px solid rgb(37, 15, 240);
+    padding: 1em;
+    /* width: 80%; */
+     /* min-height: 300px; */
+     /* flex-basis: 300px; */
+}
+.flex-shrink0 {
+    display: flex;
+    /* flex-grow: 0; */
+    /* flex-direction: row; */
+    /* align-items: flex-start;  */
+    flex-shrink: 0;
+}
+.flex-shrink1 {
+    display: flex;
+    /* flex-grow: 1;  */
+    /* flex-direction: row; */
+    /* align-items: stretch;  */
+    flex-shrink: 1; /* This is not valid CSS, just for illustration */
+    
+}
+.flex-shrink-child > .item2{
+    /* display: flex; */
+    flex-shrink: 1;
+    /* flex-direction: row; */
+    /* align-items: center;  */
+}
+
+
+
