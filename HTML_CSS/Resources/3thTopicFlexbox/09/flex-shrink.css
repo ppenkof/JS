@@ -4,7 +4,7 @@
     background-color: #ccc; /* Just for visibility */
     padding: 1em;    
     /* flex-grow: 0; */
-    flex-basis: 100px;
+    flex-basis: 300px;
     
 
 }
@@ -15,12 +15,12 @@
     align-items: flex-start; 
     border: 2px solid rgb(37, 15, 240);
     padding: 1em;
-    /* width: 80%; */
+    width: 300px;
      /* min-height: 300px; */
      /* flex-basis: 300px; */
 }
 .flex-shrink0 {
-    display: flex;
+    /* display: flex; */
     /* flex-grow: 0; */
     /* flex-direction: row; */
     /* align-items: flex-start;  */
