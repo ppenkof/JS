@@ -1,0 +1,16 @@
+class NewHttp {
+    method: string;
+    uri: string;
+    version: string;
+    response: string | undefined;
+    fulfilled: boolean;
+    constructor(method: string, uri: string, version: string, message: string) {
+        this.method = method;
+        this.uri = uri;
+        this.version = version;
+        this.response = undefined;
+        this.fulfilled = false;
+    }
+}
+
+let myData= new NewHttp('GET', 'http://google.com', 'HTTP/1.1', '');

@@ -1,0 +1,17 @@
+@media (width <= 600px) {
+   
+html, body {
+     margin: 0;
+     padding: 0;
+    border-radius: 0;
+    overflow-x: hidden;
+    }
+    
+    .home-container {
+     width: 100vw;
+     border-radius: 0;
+    overflow: visible;
+box-shadow: none;
+}
+    
+  }
