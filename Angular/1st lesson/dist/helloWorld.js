@@ -1,11 +1,13 @@
-var NewHttp = /** @class */ (function () {
-    function NewHttp(method, uri, version, message) {
+var NewH = /** @class */ (function () {
+    function NewH(method, uri, version, message) {
         this.method = method;
         this.uri = uri;
         this.version = version;
+        this.message = message;
         this.response = undefined;
         this.fulfilled = false;
     }
-    return NewHttp;
+    return NewH;
 }());
-var myData = new NewHttp('GET', 'http://google.com', 'HTTP/1.1', '');
+var myData = new NewH('GET', 'http://google.com', 'HTTP/1.1', '');
+console.log(myData);

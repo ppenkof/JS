@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ES2020" ,
+    "target": "es6", // Use the latest ECMAScript features,
     "module": "commonjs" ,
     "rootDir": "./src" ,
     "outDir": "./dist" ,
