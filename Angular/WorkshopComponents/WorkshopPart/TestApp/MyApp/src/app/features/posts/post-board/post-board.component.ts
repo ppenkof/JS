@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
   selector: 'app-post-board',
   imports: [CommonModule, PostItemComponent],
   templateUrl: './post-board.component.html',
-  styleUrl: './post-board.component.css'
+  styleUrl: './post-board.component.css',
+  standalone: true
 })
 export class PostBoardComponent {
   posts:Post[] = [];

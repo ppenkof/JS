@@ -6,7 +6,8 @@ import { Theme } from '../../../models';
   imports: [],
   templateUrl: './theme-item.component.html',
   styleUrl: './theme-item.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class ThemeItemComponent {
 @Input() theme!: Theme;

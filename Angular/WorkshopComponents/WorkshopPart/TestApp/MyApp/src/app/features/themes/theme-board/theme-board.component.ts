@@ -9,7 +9,8 @@ import { ThemeItemComponent } from '../theme-item/theme-item.component';
   selector: 'app-theme-board',
   imports: [CommonModule, ThemeItemComponent],
   templateUrl: './theme-board.component.html',
-  styleUrl: './theme-board.component.css'
+  styleUrl: './theme-board.component.css',
+  standalone: true
 })
 export class ThemeBoardComponent {
   themes$: Observable<Theme[]>;

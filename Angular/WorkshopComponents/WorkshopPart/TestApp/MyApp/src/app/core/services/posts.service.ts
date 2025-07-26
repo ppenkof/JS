@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from '../../models/post.model'; // !!!!Adjust the import path as necessary
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PostsService {
   private apiUrl = 'http://localhost:3000/api/posts?limit={0}';

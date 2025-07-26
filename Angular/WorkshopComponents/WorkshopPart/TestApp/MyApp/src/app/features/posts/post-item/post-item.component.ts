@@ -7,6 +7,7 @@ import { PostBoardComponent } from '../post-board/post-board.component';
   imports: [],
   templateUrl: './post-item.component.html',
   styleUrl: './post-item.component.css',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostItemComponent {
