@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import  { Theme } from '../../models/theme.model'; // Adjust the import path as necessary
+
 
 
 @Injectable({
@@ -14,6 +15,15 @@ export class ThemesService {
   constructor(private httpClient: HttpClient) {}
 
   getThemes(): Observable<Theme[]> {
-    return this.httpClient.get<Theme[]>(this.apiUrl);
+
+    // console.log(this.apiUrl);
+    
+    const themes = this.httpClient.get<Theme[]>(this.apiUrl);
+    // let theme=signal(themes);
+    // theme.set(themes);
+    // themes.subscribe();
+    // console.log(themes);
+
+    return themes;
   }
 }

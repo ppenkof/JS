@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Post } from '../../../models/post.model'; // Adjust the import path as necessary
-import { PostBoardComponent } from '../post-board/post-board.component';
+//import { PostBoardComponent } from '../post-board/post-board.component';
 
 @Component({
   selector: 'app-post-item',

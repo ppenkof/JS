@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 import { Theme } from '../../../models';
 import { ThemesService } from '../../../core/services/themes.service';
 import { CommonModule } from '@angular/common';
@@ -13,6 +13,7 @@ import { ThemeItemComponent } from '../theme-item/theme-item.component';
   standalone: true
 })
 export class ThemeBoardComponent {
+
   themes$: Observable<Theme[]>;
 
 constructor(private themeService: ThemesService) {

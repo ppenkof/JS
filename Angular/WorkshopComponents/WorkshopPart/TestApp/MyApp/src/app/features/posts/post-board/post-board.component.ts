@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   standalone: true
 })
 export class PostBoardComponent {
-  posts:Post[] = [];
+  //posts:Post[] = [];
   posts$: Observable<Post[]>;
 
   constructor(private postsService: PostsService) {

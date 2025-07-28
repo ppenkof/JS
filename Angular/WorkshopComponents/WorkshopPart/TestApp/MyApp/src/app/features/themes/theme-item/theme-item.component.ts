@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, WritableSignal, signal } from '@angular/core';
 import { Theme } from '../../../models';
 
 @Component({
@@ -10,5 +10,7 @@ import { Theme } from '../../../models';
   standalone: true
 })
 export class ThemeItemComponent {
-@Input() theme!: Theme;
+  
+  @Input() theme!: Theme;
+//theme.get: WritableSignal<Theme> = signal<Theme>({} as Theme);
 }

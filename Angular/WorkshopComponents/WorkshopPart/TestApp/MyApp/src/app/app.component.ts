@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ThemeBoardComponent } from "./features/themes";
-import { PostBoardComponent } from "./features/posts";
+import { ThemeBoardComponent, ThemeItemComponent } from "./features/themes";
+import { PostBoardComponent, PostItemComponent } from "./features/posts";
 import { FooterComponent } from "./shared/components/footer/footer.component";
 import { HeaderComponent } from "./shared/components/header/header.component";
 
