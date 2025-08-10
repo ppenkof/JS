@@ -12,5 +12,4 @@ import { Theme } from '../../../models';
 export class ThemeItemComponent {
   
   @Input() theme!: Theme;
-//theme.get: WritableSignal<Theme> = signal<Theme>({} as Theme);
 }

@@ -1,6 +1,6 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { Post } from '../../../models/post.model'; // Adjust the import path as necessary
-//import { PostBoardComponent } from '../post-board/post-board.component';
+// import { PostBoardComponent } from '../post-board/post-board.component';
 
 @Component({
   selector: 'app-post-item',
@@ -12,4 +12,5 @@ import { Post } from '../../../models/post.model'; // Adjust the import path as 
 })
 export class PostItemComponent {
 @Input() post!: Post;
+@Output() postChangedEvent = new EventEmitter<Post>();
 }

@@ -9,21 +9,12 @@ import  { Theme } from '../../models/theme.model'; // Adjust the import path as 
   providedIn: 'root'
 })
 export class ThemesService {
-
   private apiUrl = 'http://localhost:3000/api/themes';
 
   constructor(private httpClient: HttpClient) {}
 
   getThemes(): Observable<Theme[]> {
-
-    // console.log(this.apiUrl);
-    
     const themes = this.httpClient.get<Theme[]>(this.apiUrl);
-    // let theme=signal(themes);
-    // theme.set(themes);
-    // themes.subscribe();
-    // console.log(themes);
-
     return themes;
   }
 }

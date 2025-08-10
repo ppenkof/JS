@@ -14,4 +14,13 @@ export class PostsService {
   getPosts(limit: number = 5): Observable<Post[]> {
     return this.httpClient.get<Post[]>(this.apiUrl.replace('{0}', limit.toString()));
   }
+
+  createPost(themeName: string, postText: string): Observable<Post> {
+    const body = JSON.stringify({ themeName, postText });
+    return this.httpClient.post<Post>(this.apiUrl, body, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  } 
 }
