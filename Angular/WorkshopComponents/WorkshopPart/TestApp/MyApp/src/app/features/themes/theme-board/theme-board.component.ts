@@ -8,11 +8,12 @@ import { Post } from '../../../models/post.model';
 import { PostsService } from '../../../core/services/posts.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { PostItemComponent } from "../../posts";
+import { Router, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-theme-board',
-  imports: [CommonModule, ThemeItemComponent, PostItemComponent],
+  imports: [CommonModule, ThemeItemComponent, PostItemComponent, RouterLink],
   templateUrl: './theme-board.component.html',
   styleUrl: './theme-board.component.css',
   standalone: true
@@ -22,6 +23,7 @@ export class ThemeBoardComponent {
   private authService = inject(AuthService);
   readonly isLoggedIn = this.authService.isLoggedIn;
 
+  themeId: string = '5fa64a9f2183ce1728ff371a';
   themes$: Observable<Theme[]>;
   posts$: Observable<Post[]>;
 
