@@ -13,8 +13,7 @@ export class ThemesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getThemes(): Observable<Theme[]> {
-    const themes = this.httpClient.get<Theme[]>(this.apiUrl);
-    return themes;
+  getThemes(): Observable<Theme[]> { 
+    return this.httpClient.get<Theme[]>(this.apiUrl);
   }
 }

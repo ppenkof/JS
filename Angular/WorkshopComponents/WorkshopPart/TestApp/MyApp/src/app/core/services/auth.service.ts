@@ -75,7 +75,7 @@ logout(): void {
     localStorage.removeItem('currentUser');
   }
 
-  getCuurentUserId(): string | null {
+  getCurrentUserId(): string | null {
     const user = this._currentUser();
     return user ? user.id : null;
   }
