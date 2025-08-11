@@ -91,6 +91,10 @@ logout(): Observable<void> {
     );
 }
 
+getToken(): string {
+  return "FAKE_TOKEN=12132";
+}
+
 private mapApiUserToUser(apiUser: ApiUser): User {
   return <User> {
       id: apiUser._id,
