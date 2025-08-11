@@ -3,12 +3,16 @@ import { provideRouter } from '@angular/router';
 import { AuthenticationInterceptor, ErrorInterceptor } from './core/interseptors';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), 
-    provideHttpClient(withInterceptors([AuthenticationInterceptor, ErrorInterceptor]))
-  ]
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([AuthenticationInterceptor, ErrorInterceptor])),
+    provideStore(),
+    provideEffects()
+]
 };
