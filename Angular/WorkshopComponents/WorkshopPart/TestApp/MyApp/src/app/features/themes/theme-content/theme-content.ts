@@ -5,8 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../core/services';
 import { Comment } from '../../../models/comment';
 
-
-
 @Component({
   selector: 'app-theme-content',
   imports: [CommonModule,FormsModule],

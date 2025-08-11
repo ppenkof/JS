@@ -1,35 +1,22 @@
 import { Injectable, signal } from '@angular/core';
-import { User } from '../../models';
+import { User, ApiUser } from '../../models';
+import { tap, map, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'http://localhost:3000/api';
   private _isLoggedIn = signal<boolean>(false);
   private _currentUser = signal<User | null>(null); // Adjust type as necessary
-  private _users: User[] = [ {
-    id: '5fa64b162183ce1728ff371d', 
-    username: 'John', 
-    email: 'john.doe@gmail.com',
-    phone: '+359 885 888 888'
-},
-{
-    id: '5fa64b162183ce1728ff371e', 
-    username: 'Jane',
-    email: 'john.doe@gmail.com',
-    phone: '+359 885 888 888'
-},
-{
-    id: '5fa64b162183ce1728ff371f', 
-    username: 'David',
-    email: 'john.doe@gmail.com',
-    phone: '+359 885 888 888'
-}];
+  
 
-public isLoggedIn = this._isLoggedIn.asReadonly();
-public currentUser = this._currentUser.asReadonly();  
+  public isLoggedIn = this._isLoggedIn.asReadonly();
+  public currentUser = this._currentUser.asReadonly();  
 
-constructor() {
+constructor(private httpClient: HttpClient) {
     const savedUser = localStorage.getItem('currentUser');
     if (savedUser) {
       const user = JSON.parse(savedUser);
@@ -38,36 +25,38 @@ constructor() {
     }
   }
 
-login(email: string, password: string): boolean {
-    if (email && password) {
-        const user = this._users[0]; // Simulating a login with the first user);
+login(email: string, password: string): Observable<User> {
+    return this.httpClient.post<User>(`${this.apiUrl}/login`, { email, password }, {
+      withCredentials: true
+    }).pipe(
+      map(apiUser => this.mapApiUserToUser(apiUser)), 
+      tap(user => {
         this._currentUser.set(user);
         this._isLoggedIn.set(true);
-
         localStorage.setItem('currentUser', JSON.stringify(user));
-        return true;
-        }
-    return false;
-    }
+      })
+    ); 
+}
 
-register(username: string, email: string, phone: string, password: string, rePassword: string): boolean {
-    if (username && email && phone && password && rePassword) {
-        const newUser: User = {
-            id: `user_${Date.now()}`,
-            username,
-            email,
-            phone
-        };
+register(username: string, email: string, phone: string, password: string, rePassword: string): Observable<User> {
+  return this.httpClient.post<ApiUser>(`${this.apiUrl}/register`, {
+    username,
+    email,
+    tel: phone,
+    password,
+    rePassword
+  }, {
+      withCredentials: true
+    }).pipe(
+        map(apiUser => this.mapApiUserToUser(apiUser)),
+        tap(user => {
+            this._currentUser.set(user);
+            this._isLoggedIn.set(true);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+        })
+);
 
-        this._users.push(newUser);
-        this._currentUser.set(newUser);
-        this._isLoggedIn.set(true);
-
-        localStorage.setItem('currentUser', JSON.stringify(newUser));
-        return true;
-    }
-    return false;
-  }
+}
 
 logout(): void {
     this._currentUser.set(null);

@@ -10,7 +10,7 @@ import { inject } from '@angular/core';
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
-export class Login implements AfterViewInit {
+export class Login {
 
   private authService = inject(AuthService);
   private router = inject(Router);
@@ -24,11 +24,7 @@ export class Login implements AfterViewInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
-
-    ngAfterViewInit(): void {
-      console.dir(this.loginForm);
-    }
-  
+     
     get email(): AbstractControl<any, any> | null {
       return this.loginForm.get('email');
     }
@@ -75,11 +71,16 @@ export class Login implements AfterViewInit {
   
         const response = this.authService.login(email, password);
   
-        if (response === true) {
-          this.router.navigate(['/home']);
-        } else {
-          this.markFormGroupTouched();
-        }
+        this.authService.login(email, password).subscribe({
+          next: () => {
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            console.log('Login failed', err);
+  
+            this.markFormGroupTouched();     
+          }
+        });
       }
     }
   

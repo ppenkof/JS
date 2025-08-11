@@ -1,12 +1,13 @@
-import { ChangeDetectionStrategy, Component, Input, WritableSignal, signal, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { Theme } from '../../../models';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../core/services/auth.service';
 import { RouterLink } from '@angular/router';
+import { SliceTitlePipe } from '../../../shared/pipes/slice-title.pipe';
 
 @Component({
   selector: 'app-theme-item',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, SliceTitlePipe],
   templateUrl: './theme-item.component.html',
   styleUrl: './theme-item.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
