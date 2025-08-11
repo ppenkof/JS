@@ -26,7 +26,7 @@ constructor(private httpClient: HttpClient) {
   }
 
 login(email: string, password: string): Observable<User> {
-    return this.httpClient.post<User>(`${this.apiUrl}/login`, { email, password }, {
+    return this.httpClient.post<ApiUser>(`${this.apiUrl}/login`, { email, password }, {
       withCredentials: true
     }).pipe(
       map(apiUser => this.mapApiUserToUser(apiUser)), 
@@ -58,26 +58,46 @@ register(username: string, email: string, phone: string, password: string, rePas
 
 }
 
-logout(): void {
-    this._currentUser.set(null);
-    this._isLoggedIn.set(false);
-    localStorage.removeItem('currentUser');
-  }
+logout(): Observable<void> {
+  return this.httpClient.post<void>(`${this.apiUrl}/logout`, {}, {
+      withCredentials: true
+  }).pipe(
+      tap(() => {
+          this._currentUser.set(null);
+          this._isLoggedIn.set(false);
+          localStorage.removeItem('currentUser');
+      })
+  );
+}
 
   getCurrentUserId(): string | null {
     return this._currentUser()?.id || null;
   }
 
-  update(user: User): void {
-    const userIndex = this._users.findIndex(u => u.id === user.id);
+  update(user: User): Observable<User> {
+    return this.httpClient.put<ApiUser>(`${this.apiUrl}/users/${user.id}`, {
+        _id: user.id,
+        username: user.username,
+        email: user.email,
+        tel: user.phone       
+    }, {
+        withCredentials: true
+    }).pipe(
+        map(apiUser => this.mapApiUserToUser(apiUser)),
+        tap(user => {
+            this._currentUser.set(user);
+            localStorage.setItem('currentUser', JSON.stringify(user))
+        })
+    );
+}
 
-    if (userIndex !== -1) {
-        this._users[userIndex] = user;
-    }
-
-    this._currentUser.set(user);
-
-    localStorage.setItem('currentUser', JSON.stringify(user));
+private mapApiUserToUser(apiUser: ApiUser): User {
+  return <User> {
+      id: apiUser._id,
+      username: apiUser.username,
+      email: apiUser.email,
+      phone: apiUser.tel
+  };
 }
 }
 
