@@ -9,7 +9,12 @@ import { PostsService } from '../../../core/services/posts.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { PostItemComponent } from "../../posts";
 import { Router, RouterLink } from '@angular/router';
-
+import { Store } from '@ngrx/store';
+import { AppState } from '../../../core/store';
+import { selectPosts } from '../../../core/store/posts/post.selectors';
+import { selectThemes } from '../../../core/store/themes/theme.selector';
+import { loadThemes, loadThemesReset } from '../../../core/store/themes/theme.actions';
+import { loadPosts, loadPostsReset } from '../../../core/store/posts/post.actions';
 
 @Component({
   selector: 'app-theme-board',
@@ -25,15 +30,16 @@ export class ThemeBoardComponent {
   themes$: Observable<Theme[]>;
   posts$: Observable<Post[]>;
 
-constructor(
-  private themeService: ThemesService,
-  private postsService: PostsService) {
-    
-  this.themes$ = this.themeService.themes$;
-  this.posts$ = this.postsService.posts$;
-
-  this.themeService.getThemes().subscribe();
-  this.postsService.getPosts().subscribe();
+  constructor(private store: Store<AppState>) {
+    this.posts$ = this.store.select(selectPosts);
+    this.themes$ = this.store.select(selectThemes);
+   
+    this.store.dispatch(loadThemes());
+    this.store.dispatch(loadPosts());
   }
 
+  ngOnDestroy(): void {
+    this.store.dispatch(loadThemesReset());
+    this.store.dispatch(loadPostsReset());
+  }
 }
