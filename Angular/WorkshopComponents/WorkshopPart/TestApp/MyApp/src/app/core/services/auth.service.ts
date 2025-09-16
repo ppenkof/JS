@@ -27,7 +27,7 @@ constructor(private httpClient: HttpClient) {
 
 login(email: string, password: string): Observable<User> {
     return this.httpClient.post<ApiUser>(`${this.apiUrl}/login`, { email, password }, {
-      withCredentials: true
+      withCredentials: false
     }).pipe(
       map(apiUser => this.mapApiUserToUser(apiUser)), 
       tap(user => {
@@ -46,7 +46,7 @@ register(username: string, email: string, phone: string, password: string, rePas
     password,
     rePassword
   }, {
-      withCredentials: true
+      withCredentials: false
     }).pipe(
         map(apiUser => this.mapApiUserToUser(apiUser)),
         tap(user => {
@@ -60,7 +60,7 @@ register(username: string, email: string, phone: string, password: string, rePas
 
 logout(): Observable<void> {
   return this.httpClient.post<void>(`${this.apiUrl}/logout`, {}, {
-      withCredentials: true
+      withCredentials: false
   }).pipe(
       tap(() => {
           this._currentUser.set(null);
