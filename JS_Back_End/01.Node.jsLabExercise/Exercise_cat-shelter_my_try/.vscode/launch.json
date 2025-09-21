@@ -14,15 +14,5 @@
             "type": "node",
             "runtimeArgs": ["--watch"]
         },
-
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Debbuger",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\src\\index.js"
-        }
     ]
 }
