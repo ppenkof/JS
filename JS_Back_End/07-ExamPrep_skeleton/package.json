@@ -1,0 +1,17 @@
+{
+  "name": "07-examprep_skeleton",
+  "version": "1.0.0",
+  "description": "- [x] Initialize npm project `npm init -y`\r  - [x] Change module system\r  - [x] Add start file `/src/index.js`\r  - [x] Add dev script\r  - [x] Config debugger\r  - [x] Add resources",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
