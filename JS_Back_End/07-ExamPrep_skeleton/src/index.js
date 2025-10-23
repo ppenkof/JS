@@ -1,7 +1,7 @@
 import express from 'express';
 import routes from './routes.js';
 import handlebars from 'express-handlebars';
-import mongoose, { mongo } from 'mongoose';
+import mongoose, { get, mongo } from 'mongoose';
 import cokieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 
@@ -25,7 +25,15 @@ app.engine('hbs',handlebars.engine({
     runtimeOptions: {
         allowProtoPropertiesByDefault: true,
         allowProtoMethodsByDefault: true,
-    }   
+    } ,
+    helpers: {
+        setTitle(title){
+            this.pageTitle = title;
+        },
+        getTitle(){
+            return this.pageTitle || 'Friendly World';
+        }
+    }  
 }));
 app.set('view engine', 'hbs');
 app.set('views', 'src/views');
