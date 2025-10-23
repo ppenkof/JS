@@ -1,4 +1,6 @@
-import User from '../models/User.js';   
+import User from '../models/User.js';  
+import bcrypt from 'bcrypt';
+import { generateToken } from '../utils/tokenUtils.js';
 
 export async function register(email, password) {
     const user = await User.findOne({ email });
@@ -6,6 +8,25 @@ export async function register(email, password) {
     if (user) {
         throw new Error('Email is already in use'); 
     }
+
+    const createdUser = await User.create({ email, password }); 
+    const token = generateToken(createdUser);
+    return token;
+}
+
+export async function login(email, password) {
+    const user = await User.findOne({ email });
     
-    return User.create({ email, password });    
+    if (!user) {
+        throw new Error('Invalid email or password'); 
+    }
+
+    const isValid = await bcrypt.compare(password, user.password);
+
+    if (!isValid) {
+        throw new Error('Invalid email or password'); 
+    }   
+
+    const token = generateToken(user);
+    return token;
 }
