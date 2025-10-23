@@ -1,14 +1,15 @@
 import { Router } from "express";
 import homeController  from "./controllers/homeController.js";
 import errorController from "./controllers/errorController.js";
+import userController from "./controllers/userController.js";
 
-const router = Router();
+const routes = Router();
 
-router.use(homeController);
-
+routes.use(homeController);
+routes.use('/users', userController);
 //todo add routes here
 
 
-router.use(errorController);
+routes.use(errorController);
 
-export default router;
+export default routes;

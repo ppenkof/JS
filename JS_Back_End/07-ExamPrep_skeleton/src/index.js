@@ -1,8 +1,21 @@
 import express from 'express';
 import routes from './routes.js';
 import handlebars from 'express-handlebars';
+import mongoose, { mongo } from 'mongoose';
+
 
 const app = express();  
+
+//Connect to DB
+try {
+    await mongoose.connect('mongodb://localhost:27017', {
+        dbName: 'exam_prep_db' 
+    });
+
+    console.log('Connected to DB successfuly...')
+} catch (error) {
+    console.error('Error connecting to DB: ', error.message);
+}
 
 //Config handlebars
 app.engine('hbs',handlebars.engine({ 
