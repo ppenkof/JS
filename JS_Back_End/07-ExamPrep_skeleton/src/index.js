@@ -6,6 +6,7 @@ import cokieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 import helpers from './models/helpers/index.js';
 import 'dotenv/config';
+import { errorMiddleware } from './middlewares/errorMiddleware.js';
 
 
 const app = express();  
@@ -47,6 +48,9 @@ app.use(authMiddleware);
 
 //Add routes
 app.use(routes);
+
+//Add global error handling middleware  
+app.use(errorMiddleware)
 
 app.listen(process.env.PORT, () => {  
     console.log(`Server is running on http://localhost:${process.env.PORT}...`);  
