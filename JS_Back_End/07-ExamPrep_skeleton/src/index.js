@@ -5,6 +5,7 @@ import mongoose, { get, mongo } from 'mongoose';
 import cokieParser from 'cookie-parser';
 import { authMiddleware } from './middlewares/authMiddleware.js';
 import helpers from './models/helpers/index.js';
+import 'dotenv/config';
 
 
 const app = express();  
@@ -47,7 +48,7 @@ app.use(authMiddleware);
 //Add routes
 app.use(routes);
 
-app.listen(5000, () => {  
-    console.log('Server is running on http://localhost:5000...');  
+app.listen(process.env.PORT, () => {  
+    console.log(`Server is running on http://localhost:${process.env.PORT}...`);  
 });
 

@@ -12,7 +12,10 @@
                 "<node_internals>/**"
             ],
             "type": "node",
-            "runtimeArgs": ["--watch"]
+            "runtimeArgs": ["--watch"],
+            "env":{
+                "PORT": "3001"
+            }
         },
     ]
 }
