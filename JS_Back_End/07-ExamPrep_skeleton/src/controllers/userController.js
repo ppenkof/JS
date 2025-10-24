@@ -21,7 +21,7 @@ userController.post('/register', isGuest, async (req, res) => {
         res.cookie('auth', token);
         res.redirect('/');
     } catch (error) {
-        res.render('users/register', {
+        res.status(400).render('users/register', {
             error: getErrorMessage(error),
             user: {email}
         });
@@ -43,7 +43,7 @@ userController.post('/login', isGuest, async (req, res) => {
         res.cookie('auth', token);
         res.redirect('/');
     } catch (error) {
-        res.render('users/login', {
+        res.status(404).render('users/login', {
             error: getErrorMessage(error),
             user: {email}
         });
