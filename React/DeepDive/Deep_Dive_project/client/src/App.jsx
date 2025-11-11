@@ -3,7 +3,7 @@ import Footer from "./components/Footer.jsx"
 import Search from "./components/Search.jsx"
 import Pagination from "./components/Pagination.jsx"
 import UserList from "./components/UserList.jsx"
-import CreateUser from "./components/CreateUser.jsx"
+import CreateUserModal from "./components/CreateUserModal.jsx"
 import { useState } from "react"
 
 function App() {
@@ -12,6 +12,9 @@ function App() {
   const addUserClickHandler = ()=>{
     console.log('Add User');
     setShowCreateUser(true);
+  }
+  const closeUserModalHandler = ()=>{
+    setShowCreateUser(false);
   }
 
   return (
@@ -32,7 +35,7 @@ function App() {
         
         </section>
 
-        {showCreateUser && <CreateUser />}
+        {showCreateUser && <CreateUserModal onClose={closeUserModalHandler}/>}
 
       </main>
 
