@@ -9,18 +9,18 @@ function App() {
    <div>
       <Header/>
 
-    <main className="main">
-      <section className="card users-container">
+      <main className="main">
+        <section className="card users-container">
+          
+          <Search/>
+
+          <UserList/>
+
+
+          <Pagination/>
         
-        <Search/>
-
-        <UserList/>
-
-
-        <Pagination/>
-       
-      </section>
-    </main>
+        </section>
+      </main>
 
       <Footer/>
    </div>
