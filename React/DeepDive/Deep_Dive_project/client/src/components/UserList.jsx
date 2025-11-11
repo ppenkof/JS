@@ -77,9 +77,6 @@ export default function UserList() {
           </tbody>
         </table>
 
-        {/* <!-- New user button  --> */}
-        <button className="btn-add btn">Add new user</button>
-
       </div>
     );
 }
