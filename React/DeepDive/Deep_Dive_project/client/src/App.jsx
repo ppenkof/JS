@@ -7,7 +7,9 @@ import CreateUserModal from "./components/CreateUserModal.jsx"
 import { useState, useEffect } from "react"
 
 function App() {
-  const[users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [showCreateUser, setShowCreateUser] = useState(false);
+  const [forceRefresh, setForceRefresh] = useState(true);
   
   useEffect(()=>{
     fetch('http://localhost:3030/jsonstore/users')
@@ -16,9 +18,7 @@ function App() {
             setUsers(Object.values(result));
           })
           .catch((err)=> alert(err.message));
-  }, []);
-
-  const [showCreateUser, setShowCreateUser] = useState(false);
+  }, [forceRefresh]);
   
   const addUserClickHandler = ()=>{
     console.log('Add User');
@@ -46,19 +46,21 @@ function App() {
 
     //Todo fix address
     //Todo fix createdAt and updatedAt
-    
+
     // Create new user request
-    fetch('http:localhost:3030/jsonstore/users', {
+    fetch('http://localhost:3030/jsonstore/users', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
       body: JSON.stringify(userData)
     })
-    .then(response=>response,json())
-    .then(result=>{
-      console.log(result)
-    });
+    .then(response => response.json())
+    .then(result =>{
+      console.log(result);
+      setForceRefresh(state => !state);
+    })
+    .catch(err => alert(err.message));
   }
 
   return (
