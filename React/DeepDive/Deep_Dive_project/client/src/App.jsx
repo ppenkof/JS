@@ -42,6 +42,7 @@ function App() {
     };
 
     userData.createdAt= new Date().toISOString();
+    userData.updatedAt= new Date().toISOString();
 
 
     //Todo fix address
@@ -59,6 +60,7 @@ function App() {
     .then(result =>{
       console.log(result);
       setForceRefresh(state => !state);
+      closeUserModalHandler();
     })
     .catch(err => alert(err.message));
   }
