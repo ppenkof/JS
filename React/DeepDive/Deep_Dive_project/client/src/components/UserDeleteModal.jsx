@@ -1,14 +1,14 @@
 export default function UserDeleteModal({
     userId,
     onClose,
-    forceUserRefresh
+   // forceUserRefresh
 }){
 
 const deleteUserHandler = async () =>{
     try {
        await fetch(`http://localhost:3030/jsonstore/users/${userId}`, {method: 'DELETE'}) 
        onClose();
-       forceUserRefresh();
+       //forceUserRefresh();
     } catch (err) {
        alert(err.message);
     }

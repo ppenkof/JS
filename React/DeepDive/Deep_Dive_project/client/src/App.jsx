@@ -3,7 +3,7 @@ import Footer from "./components/Footer.jsx"
 import Search from "./components/Search.jsx"
 import Pagination from "./components/Pagination.jsx"
 import UserList from "./components/UserList.jsx"
-import CreateUserModal from "./components/CreateUserModal.jsx"
+import UserSaveModal from "./components/UserSaveModal.jsx"
 import { useState, useEffect } from "react"
 
 function App() {
@@ -62,6 +62,7 @@ function App() {
     })
     .then(response => response.json())
     .then(result =>{
+      console.log(result);
       closeUserModalHandler();
       forceUserRefresh();
     })
@@ -87,7 +88,7 @@ function App() {
         </section>
 
         {showCreateUser && 
-          <CreateUserModal 
+          <UserSaveModal 
             onClose={closeUserModalHandler}
             onSubmit={AddUserSubmitHandler}
             />
