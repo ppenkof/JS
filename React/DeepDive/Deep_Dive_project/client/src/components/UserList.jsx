@@ -6,7 +6,8 @@ import UserSaveModal from "./UserSaveModal";
 
 export default function UserList({
   users,
-  forceUserRefresh
+  forceUserRefresh,
+  onSort
 }) {
 
   const [showUserDetails, setShowUserDetails] = useState(false);
@@ -111,7 +112,7 @@ export default function UserList({
                   </path>
                 </svg>
               </th>
-              <th>
+              <th onClick ={onSort}> 
                 Created<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down"
                   className="icon active-icon svg-inline--fa fa-arrow-down Table_icon__+HHgn" role="img"
                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">

@@ -31,6 +31,13 @@ function App() {
   const closeUserModalHandler = ()=>{
     setShowCreateUser(false);
   }
+
+  const sortUsersHandler = () => {
+    console.log('sort users');
+    setUsers(state => [...state].sort((a,b)=>new Date(b.createdAt)- new Date(a.createdAt)));
+  }
+
+
 // Stop page refresh
   const AddUserSubmitHandler = (event) => {
     event.preventDefault();
@@ -78,7 +85,7 @@ function App() {
           
           <Search/>
 
-          <UserList users={users} forceUserRefresh={forceUserRefresh}/>
+          <UserList users={users} forceUserRefresh={forceUserRefresh} onSort={sortUsersHandler}/>
 
            {/* <!-- New user button  --> */}
           <button className="btn-add btn" onClick={addUserClickHandler}>Add new user</button>
